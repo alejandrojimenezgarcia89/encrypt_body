@@ -49,7 +49,7 @@ class CommandLineAppStartupRunner implements CommandLineRunner {
 		String testEncoded = aesService
 				.encrypt(RequestBodyTest.builder().email("aljimenezga.ext@acciona.com").employeeId(30007206L).build());
 		System.out.println("testEncoded " + testEncoded);
-		// testClient.testPost(testEncoded);
+		testClient.testPost(testEncoded);
 
 	}
 }
