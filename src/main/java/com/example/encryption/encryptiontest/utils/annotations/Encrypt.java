@@ -7,7 +7,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 @Retention(RUNTIME)
-@Target({ElementType.PARAMETER,ElementType.FIELD})
-public @interface Decrypt {
+@Target({ElementType.FIELD,ElementType.METHOD})
+public @interface Encrypt {
 
 }

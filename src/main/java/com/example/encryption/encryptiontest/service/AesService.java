@@ -1,11 +1,18 @@
 package com.example.encryption.encryptiontest.service;
 
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
+import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 import java.util.Base64;
 
+import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
+import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 import com.example.encryption.encryptiontest.api.IEncryptionService;
@@ -16,52 +23,48 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AesService implements IEncryptionService {
-
+    private static final String AES_ALGORITHM = "AES/ECB/PKCS5Padding";
     @Value("${encrypt.key}")
     private String key;
 
     @Override
-    public String encrypt(Object body) {
-        return AESUtils.encrypt(new Gson().toJson(body).toString().getBytes(), key);
+    public String encrypt(final Object body) {
+        String encryptedBody = null;
+        
+        try {
+            
+            System.out.println("body "+body);
+            String bodyStr = body instanceof String ? (String) body : new Gson().toJson(body);
+            System.out.println("bodyStr "+bodyStr);
+            System.out.println("bodyStr "+new String(bodyStr.getBytes(),StandardCharsets.UTF_8));
+            byte[] cipherText = getCipher(Cipher.ENCRYPT_MODE).doFinal(bodyStr.getBytes());
+            System.out.println("new String(Base64.getEncoder().encode(cipherText) "+new String(Base64.getEncoder().encode(cipherText)));
+            encryptedBody= new String(Base64.getEncoder().encode(cipherText));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return encryptedBody;
+       
     }
 
     @Override
-    public byte[] decrypt(byte[] body) {
-        return AESUtils.decrypt(body, key);
+    public byte[] decrypt(final String body) {
+        try {
+            return getCipher(Cipher.DECRYPT_MODE).doFinal(Base64.getDecoder()
+            .decode(body));
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return new byte[] {};
+        }
     }
-}
 
-class AESUtils {
-    private static final String AES_ALGORITHM = "AES/ECB/PKCS5Padding";
     // 获取 cipher
-    private static Cipher getCipher(byte[] key, int model) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException {
-        
-        SecretKeySpec secretKeySpec = new SecretKeySpec(key, "AES");
-        
+    private Cipher getCipher(int model)
+            throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException {
+        SecretKeySpec secretKeySpec = new SecretKeySpec(key.getBytes(), "AES");
         Cipher cipher = Cipher.getInstance(AES_ALGORITHM);
         cipher.init(model, secretKeySpec);
         return cipher;
     }
-    // AES加密
-    public static String encrypt(byte[] data, String key)  {
-        Cipher cipher;
-        try {
-            cipher = getCipher(key.getBytes(), Cipher.ENCRYPT_MODE);
-            return Base64.getEncoder().encodeToString(cipher.doFinal(data));
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "";
-        }
-        
-    }
-    // AES解密
-    public static byte[] decrypt(byte[] data, String key)  {
-        
-        try {
-            Cipher cipher = getCipher(key.getBytes(), Cipher.DECRYPT_MODE);
-            return cipher.doFinal(Base64.getDecoder().decode(data));
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new byte[]{};
-        }
-    }}
+}
