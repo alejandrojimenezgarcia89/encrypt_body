@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class ResponseBodyDTO {
+public class ResponseBodyDTOEntryptedFields {
 
     @Encrypt
     private String email;

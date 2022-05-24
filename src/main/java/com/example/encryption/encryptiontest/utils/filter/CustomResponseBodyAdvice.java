@@ -1,4 +1,4 @@
-package com.example.encryption.encryptiontest;
+package com.example.encryption.encryptiontest.utils.filter;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -6,6 +6,7 @@ import java.lang.reflect.Field;
 import com.example.encryption.encryptiontest.api.IEncryptionService;
 import com.example.encryption.encryptiontest.utils.annotations.Encrypt;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -17,14 +18,13 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-@RestControllerAdvice // Don't forget the @RestControllerAdvice annotation. It will take effect for
-                      // all RestControllers.
+@RestControllerAdvice
 @Slf4j
 @RequiredArgsConstructor
 public class CustomResponseBodyAdvice implements ResponseBodyAdvice<Object> {
 
     private final IEncryptionService aesService;
-
+    
     /**
      * If this method returns false, the `beforeBodyWrite` method will not be
      * executed.
@@ -39,12 +39,10 @@ public class CustomResponseBodyAdvice implements ResponseBodyAdvice<Object> {
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType,
             Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request,
             ServerHttpResponse response) {
-        boolean hasFieldMethod = false;
+        boolean hasFieldAnnotation = false;
         for (Field field : body.getClass().getDeclaredFields()) {
-            // System.out.println("Field: {} - Annotations: {}", field.getName(), field.getAnnotations());
-            for(Annotation fieldAnnotation :field.getAnnotations()){
-                // System.out.println("{} fieldAnnotation.getClass().equals(Encrypt.class) {}",fieldAnnotation.annotationType(),fieldAnnotation.annotationType().equals(Encrypt.class));
-                if(fieldAnnotation.annotationType().equals(Encrypt.class)){
+            for (Annotation fieldAnnotation : field.getAnnotations()) {
+                if (fieldAnnotation.annotationType().equals(Encrypt.class)) {
                     try {
                         field.setAccessible(true);
                         field.set(body, aesService.encrypt(field.get(body)));
@@ -52,18 +50,15 @@ public class CustomResponseBodyAdvice implements ResponseBodyAdvice<Object> {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
-                    
-                    hasFieldMethod=true;
+
+                    hasFieldAnnotation = true;
                 }
             }
         }
-        // System.out.println("CustomResponseBodyAdvice.beforeBodyWrite body:{}", body);
-        // System.out.println("CustomResponseBodyAdvice.beforeBodyWrite aesService.encrypt(body):{}", aesService.encrypt(body));
-        // return "nqM9xvFB10XNUYi3FsdCOGUb1Dip9aL6Ca0kuxEpWprp6XObtsTWvATu/1NXOlkYOsBeVyCaSvFUUA+fPWxWbA==";
-        if(hasFieldMethod) {
+        if (hasFieldAnnotation) {
             return body;
         } else {
-            return aesService.encrypt(body);            
+            return aesService.encrypt(body);
         }
 
     }

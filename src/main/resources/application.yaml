@@ -1,2 +1,3 @@
 encrypt:
-    key: "peekaboopeekaboo"
+    key: peekaboopeekaboo
+    iv: 1234567890123456

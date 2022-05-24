@@ -1,0 +1,342 @@
+{
+	"info": {
+		"_postman_id": "2a326ef6-df6a-4b46-8228-0a9215889924",
+		"name": "ENCRYPT_BODY",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19752815"
+	},
+	"item": [
+		{
+			"name": "encrypted_body_and_encrypted_response",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "utUqnHSDc8WrG4e03QPXmIGXmzdyTD1z89cZhlke1vDVJizKm2kYNLlnpp3vdAUogd/Unb8IxUo85VUXuAv/f4bdoeoyjRdy/roiQW+smSPG1KPhIGz3ojRIVKsyp3ak",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/encrypted_body_and_encrypted_response",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"encrypted_body_and_encrypted_response"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "utUqnHSDc8WrG4e03QPXmIGXmzdyTD1z89cZhlke1vDVJizKm2kYNLlnpp3vdAUogd/Unb8IxUo85VUXuAv/f4bdoeoyjRdy/roiQW+smSPG1KPhIGz3ojRIVKsyp3ak",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/encrypted_body_and_encrypted_response",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"encrypted_body_and_encrypted_response"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 24 May 2022 13:57:39 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "\"utUqnHSDc8WrG4e03QPXmIGXmzdyTD1z89cZhlke1vDVJizKm2kYNLlnpp3vdAUogd/Unb8IxUo85VUXuAv/f4bdoeoyjRdy/roiQW+smSPG1KPhIGz3ojRIVKsyp3ak\""
+				}
+			]
+		},
+		{
+			"name": "encrypted_body_and_encrypted_fields_response",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "utUqnHSDc8WrG4e03QPXmIGXmzdyTD1z89cZhlke1vDVJizKm2kYNLlnpp3vdAUogd/Unb8IxUo85VUXuAv/f4bdoeoyjRdy/roiQW+smSPG1KPhIGz3ojRIVKsyp3ak",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/encrypted_body_and_encrypted_fields_response",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"encrypted_body_and_encrypted_fields_response"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "utUqnHSDc8WrG4e03QPXmIGXmzdyTD1z89cZhlke1vDVJizKm2kYNLlnpp3vdAUogd/Unb8IxUo85VUXuAv/f4bdoeoyjRdy/roiQW+smSPG1KPhIGz3ojRIVKsyp3ak",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/encrypted_body_and_encrypted_fields_response",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"encrypted_body_and_encrypted_fields_response"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 24 May 2022 13:57:57 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"email\": \"xj2pBzI9R0+sDGs+6wT/sklqfhTpXH05ajp7DoPzqew=\",\n    \"employeeId\": \"8LLnHMv3yciF/ge7SLUmwQ==\",\n    \"publicData\": \"Dato público\"\n}"
+				}
+			]
+		},
+		{
+			"name": "encrypted_fields_request_and_encrypted_response",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"xj2pBzI9R0+sDGs+6wT/sklqfhTpXH05ajp7DoPzqew=\",\r\n    \"employeeId\": \"8LLnHMv3yciF/ge7SLUmwQ==\",\r\n    \"publicData\": \"Dato público\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/encrypted_fields_request_and_encrypted_response",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"encrypted_fields_request_and_encrypted_response"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"xj2pBzI9R0+sDGs+6wT/sklqfhTpXH05ajp7DoPzqew=\",\r\n    \"employeeId\": \"8LLnHMv3yciF/ge7SLUmwQ==\",\r\n    \"publicData\": \"Dato público\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/encrypted_fields_request_and_encrypted_response",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"encrypted_fields_request_and_encrypted_response"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 24 May 2022 13:58:22 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "\"utUqnHSDc8WrG4e03QPXmIGXmzdyTD1z89cZhlke1vDVJizKm2kYNLlnpp3vdAUogd/Unb8IxUo85VUXuAv/f4bdoeoyjRdy/roiQW+smSPG1KPhIGz3ojRIVKsyp3ak\""
+				}
+			]
+		},
+		{
+			"name": "encrypted_fields_request_and_encrypted_fields_response",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"xj2pBzI9R0+sDGs+6wT/sklqfhTpXH05ajp7DoPzqew=\",\r\n    \"employeeId\": \"8LLnHMv3yciF/ge7SLUmwQ==\",\r\n    \"publicData\": \"Dato público\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/encrypted_fields_request_and_encrypted_fields_response",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"encrypted_fields_request_and_encrypted_fields_response"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"xj2pBzI9R0+sDGs+6wT/sklqfhTpXH05ajp7DoPzqew=\",\r\n    \"employeeId\": \"8LLnHMv3yciF/ge7SLUmwQ==\",\r\n    \"publicData\": \"Dato público\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/encrypted_fields_request_and_encrypted_fields_response",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"encrypted_fields_request_and_encrypted_fields_response"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 24 May 2022 13:58:30 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"email\": \"xj2pBzI9R0+sDGs+6wT/sklqfhTpXH05ajp7DoPzqew=\",\n    \"employeeId\": \"8LLnHMv3yciF/ge7SLUmwQ==\",\n    \"publicData\": \"Dato público\"\n}"
+				}
+			]
+		}
+	]
+}
